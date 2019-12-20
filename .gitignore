@@ -1,0 +1,4 @@
+node_modules
+gatsby-ssr.js
+!src/gatsby-ssr.js
+.DS_Store
