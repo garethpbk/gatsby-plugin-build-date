@@ -1,10 +1,13 @@
 {
   "name": "gatsby-plugin-build-date",
-  "version": "1.1.3",
-  "description": "Gatsby plugin add build date of site to internal GraphQL API.",
+  "version": "1.0.0",
+  "description": "Gatsby plugin to add build date of site to internal GraphQL API",
   "keywords": [
     "gatsby",
-    "gatbsy-plugin"
+    "gatsby-plugin",
+    "date",
+    "build date",
+    "updated date"
   ],
   "author": "gareth bk <garethbk@gmail.com> https://gareth.cool",
   "license": "MIT",
@@ -14,11 +17,11 @@
   },
   "scripts": {
     "build": "babel src --out-dir .",
-    "prepare": "npm run build",
+    "prepare": "yarn build",
     "format": "prettier --write \"src/**/*.js\""
   },
   "dependencies": {
-    "full-icu": "^1.3.0"
+    "date-and-time": "^0.11.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

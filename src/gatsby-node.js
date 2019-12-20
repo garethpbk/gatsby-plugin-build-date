@@ -1,12 +1,23 @@
+const date = require('date-and-time')
+
 exports.sourceNodes = (
   { actions, createNodeId, createContentDigest },
-  { formatAsDateString = true, options },
+  {
+    formatAsDateString = true,
+    formatting = { format: 'MM/DD/YYYY', utc: false },
+    locale = null,
+  },
 ) => {
   const { createNode } = actions
 
+  if (locale) {
+    require(`date-and-time/locale/${locale}`)
+    date.locale(locale)
+  }
+
   const buildDateData = {
     currentDate: formatAsDateString
-      ? new Date().toLocaleDateString(options)
+      ? date.format(new Date(), formatting.format, formatting.utc)
       : new Date(),
   }
 

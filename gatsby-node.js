@@ -1,16 +1,29 @@
 "use strict";
 
+const date = require('date-and-time');
+
 exports.sourceNodes = ({
   actions,
   createNodeId,
   createContentDigest
 }, {
   formatAsDateString = true,
-  options
+  formatting = {
+    format: 'MM/DD/YYYY',
+    utc: false
+  },
+  locale = null
 }) => {
   const createNode = actions.createNode;
+
+  if (locale) {
+    require(`date-and-time/locale/${locale}`);
+
+    date.locale(locale);
+  }
+
   const buildDateData = {
-    currentDate: formatAsDateString ? new Date().toLocaleDateString(options) : new Date()
+    currentDate: formatAsDateString ? date.format(new Date(), formatting.format, formatting.utc) : new Date()
   };
   const buildDateNodeContent = JSON.stringify(buildDateData);
   const buildDateNodeMeta = {
